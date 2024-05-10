@@ -1,4 +1,4 @@
 def suma(a,b):
   return a + b
 
-console.log(suma(1,2))
+print(suma(1,2))
