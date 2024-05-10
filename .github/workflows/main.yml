@@ -1,0 +1,27 @@
+name: prueba
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install -r requirements.txt
+      - name: Run Python
+        run: python suma.py
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Primer commit con github actions
+          commit_user_name: Juan Aguirre
+          commit_user_email: juanpabloaguirreosorio@gmail.com
+          
